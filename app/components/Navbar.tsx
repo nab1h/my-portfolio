@@ -17,10 +17,10 @@ import {
   DrawerContent,
   DrawerCloseButton,
   VStack,
-  useColorModeValue,
   Image,
   useColorMode,
 } from "@chakra-ui/react";
+import { usePathname } from "next/navigation";
 import { FaBars, FaMoon, FaSun } from "react-icons/fa";
 
 // 1. Define the interface for the NavLinks props
@@ -44,7 +44,8 @@ const NavLinks: React.FC<NavLinksProps> = ({ onClick }) => {
 const Navbar: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-  const { bg, primaryColor } = useAppColors();
+  const { navbarBg, primaryColor, highlightColor } = useAppColors();
+  const pathname = usePathname();
 
   return (
     <>
@@ -53,7 +54,7 @@ const Navbar: React.FC = () => {
         top="0"
         w="100%"
         zIndex="sticky"
-        bg={bg}
+        bg={navbarBg}
         boxShadow="sm"
         borderTop={`5px solid ${primaryColor}`}
       >
@@ -76,40 +77,43 @@ const Navbar: React.FC = () => {
               display={{ base: "flex", md: "none" }}
               onClick={onOpen}
               variant="ghost"
-              color={primaryColor}
+              color={highlightColor}
             />
 
             {/* Desktop: Nav Tabs */}
             <HStack spacing={8} display={{ base: "none", md: "flex" }}>
-              {LinksPage.map((item) => (
-                <Link
-                  height="full"
-                  style={{ textDecoration: "none" }}
-                  key={item.label}
-                  href={item.href}
-                  position="relative"
-                  _after={{
-                    content: '""',
-                    position: "absolute",
-                    left: 0,
-                    bottom: "-20px",
-                    width: "0%",
-                    height: "5px",
-                    bg: "#e60914",
-                    transition: "0.3s",
-                  }}
-                  _hover={{
-                    _after: {
-                      width: "100%",
-                    },
-                  }}
-                  fontSize="lg"
-                  fontWeight="medium"
-                  color={primaryColor}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {LinksPage.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    height="full"
+                    style={{ textDecoration: "none" }}
+                    key={item.label}
+                    href={item.href}
+                    position="relative"
+                    _after={{
+                      content: '""',
+                      position: "absolute",
+                      left: 0,
+                      bottom: "-20px",
+                      width: isActive ? "100%" : "0%",
+                      height: "5px",
+                      bg: "#e60914",
+                      transition: "0.3s",
+                    }}
+                    _hover={{
+                      _after: {
+                        width: "100%",
+                      },
+                    }}
+                    fontSize="lg"
+                    fontWeight="medium"
+                    color={isActive ? primaryColor : highlightColor}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </HStack>
           </HStack>
 
@@ -138,7 +142,7 @@ const Navbar: React.FC = () => {
               icon={colorMode === "light" ? <FaMoon /> : <FaSun />}
               onClick={toggleColorMode}
               variant="ghost"
-              color={primaryColor}
+              color={highlightColor}
               fontSize="20px"
               position="relative"
               _after={{
@@ -168,7 +172,7 @@ const Navbar: React.FC = () => {
                   aria-label={item.label}
                   icon={<Icon />}
                   variant="ghost"
-                  color={primaryColor}
+                  color={highlightColor}
                   fontSize="20px"
                   display={{ base: "none", md: "inline-flex" }}
                   position="relative"
@@ -197,8 +201,8 @@ const Navbar: React.FC = () => {
       {/* MOBILE DRAWER COMPONENT */}
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
-        <DrawerContent color={primaryColor}>
-          <DrawerCloseButton color={primaryColor} />
+        <DrawerContent color={highlightColor}>
+          <DrawerCloseButton color={highlightColor} />
           <DrawerHeader borderBottomWidth="1px">Menu</DrawerHeader>
           <DrawerBody>
             {/* Render the external component here */}
@@ -215,7 +219,7 @@ const Navbar: React.FC = () => {
                     href={item.href}
                     icon={<Icon />}
                     variant="ghost"
-                    color={primaryColor}
+                    color={highlightColor}
                     aria-label={item.label}
                   />
                 );
