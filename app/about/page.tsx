@@ -14,11 +14,11 @@ import {
 import { motion } from "framer-motion";
 import SectionTitle from "../components/SectionTitle";
 import { useAppColors } from "@/hooks/useAppColors";
+import { skillsAboutPage } from "@/data";
 
 const About = () => {
-  const textColor = useColorModeValue("gray.600", "gray.300");
-    const headingColor = useColorModeValue("gray.800", "white");
-    const { highlightColor,primaryColor } = useAppColors();
+    const { highlightColor, primaryColor, textColor, headingColor } =
+      useAppColors();
 
   return (
     <Box id="about" py={20}>
@@ -57,7 +57,7 @@ const About = () => {
                 zIndex={0}
               />
               <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80"
+                src="about.jpg"
                 alt="Profile"
                 w="100%"
                 h="100%"
@@ -78,7 +78,7 @@ const About = () => {
             style={{ flex: 1 }}
           >
             <Heading size="xl" color={headingColor} mb={4}>
-              Im John Doe
+              I&apos;m Nabih Alashmawy
             </Heading>
             <Text
               color={highlightColor}
@@ -86,35 +86,31 @@ const About = () => {
               fontWeight="medium"
               mb={4}
             >
-              Frontend Developer & UI Designer
+              Full-Stack Web Developer
             </Text>
 
             <Text color={textColor} lineHeight="tall" mb={6}>
-              I build exceptional digital experiences. With a passion for clean
-              code and modern design, I transform complex problems into simple,
-              beautiful, and intuitive solutions. I am currently focused on
-              creating accessible, human-centered products.
+              I build fast, modern, and scalable web applications using the
+              latest technologies.
             </Text>
 
             <Wrap spacing={3} mb={8}>
-              {["React", "Next.js", "TypeScript", "Chakra UI", "Figma"].map(
-                (skill) => (
-                  <WrapItem key={skill}>
-                    <Box
-                      px={4}
-                      py={1.5}
-                      // eslint-disable-next-line react-hooks/rules-of-hooks
-                      bg={useColorModeValue("gray.100", "gray.700")}
-                      color={headingColor}
-                      borderRadius="full"
-                      fontSize="sm"
-                      fontWeight="medium"
-                    >
-                      {skill}
-                    </Box>
-                  </WrapItem>
-                ),
-              )}
+              {skillsAboutPage.map((skill) => (
+                <WrapItem key={skill}>
+                  <Box
+                    px={4}
+                    py={1.5}
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    bg={useColorModeValue("gray.100", "gray.700")}
+                    color={headingColor}
+                    borderRadius="full"
+                    fontSize="sm"
+                    fontWeight="medium"
+                  >
+                    {skill}
+                  </Box>
+                </WrapItem>
+              ))}
             </Wrap>
           </motion.div>
         </Flex>
