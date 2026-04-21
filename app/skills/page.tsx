@@ -13,27 +13,9 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import {
-  FaJs,
-  FaPython,
-  FaHtml5,
-  FaCss3Alt,
-  FaReact,
-  FaNodeJs,
-  FaGitAlt,
-  FaDocker,
-  FaFigma,
-  FaGithub,
-} from "react-icons/fa";
-import {
-  SiTypescript,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiChakraui,
-  SiMongodb,
-  SiPostman,
-} from "react-icons/si";
+
 import SectionTitle from "../components/SectionTitle";
+import { skillsData } from "@/data";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -54,39 +36,7 @@ const containerVariants = {
   },
 };
 
-const skillsData = [
-  {
-    title: "Programming Languages",
-    skills: [
-      { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
-      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-      { name: "Python", icon: FaPython, color: "#3776AB" },
-      { name: "HTML5", icon: FaHtml5, color: "#E34F26" },
-      { name: "CSS3", icon: FaCss3Alt, color: "#1572B6" },
-    ],
-  },
-  {
-    title: "Frameworks & Libraries",
-    skills: [
-      { name: "React", icon: FaReact, color: "#61DAFB" },
-      { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-      { name: "Node.js", icon: FaNodeJs, color: "#339933" },
-      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
-      { name: "Chakra UI", icon: SiChakraui, color: "#319795" },
-    ],
-  },
-  {
-    title: "Tools & Technologies",
-    skills: [
-      { name: "Git", icon: FaGitAlt, color: "#F05032" },
-      { name: "GitHub", icon: FaGithub, color: "#181717" },
-      { name: "Docker", icon: FaDocker, color: "#2496ED" },
-      { name: "Figma", icon: FaFigma, color: "#F24E1E" },
-      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-    ],
-  },
-];
+
 
 const Skills = () => {
   const { primaryColor, textColor, headingColor } = useAppColors();

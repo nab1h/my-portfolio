@@ -23,12 +23,10 @@ import {
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
   FaPaperPlane,
 } from "react-icons/fa";
 import SectionTitle from "../components/SectionTitle";
+import { iconNavbar } from "@/data";
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -54,7 +52,6 @@ const Contact = () => {
         />
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-          {/* القسم الأيسر: معلومات الاتصال */}
           <motion.div
             variants={itemVariants}
             initial="hidden"
@@ -80,7 +77,7 @@ const Contact = () => {
                     <Text fontWeight="bold" color={headingColor}>
                       Address
                     </Text>
-                    <Text color={textColor}>Cairo, Egypt</Text>
+                    <Text color={textColor}>Tanta,Gharbya, Egypt</Text>
                   </Box>
                 </HStack>
 
@@ -90,7 +87,7 @@ const Contact = () => {
                     <Text fontWeight="bold" color={headingColor}>
                       Phone
                     </Text>
-                    <Text color={textColor}>+20 123 456 7890</Text>
+                    <Text color={textColor}>+20 115 442 4837</Text>
                   </Box>
                 </HStack>
 
@@ -100,53 +97,30 @@ const Contact = () => {
                     <Text fontWeight="bold" color={headingColor}>
                       Email
                     </Text>
-                    <Text color={textColor}>john.doe@example.com</Text>
+                    <Text color={textColor}>info@nabih.online</Text>
                   </Box>
                 </HStack>
               </VStack>
 
               <HStack spacing={4} pt={4}>
-                <Link href="https://github.com" isExternal>
-                  <Icon
-                    as={FaGithub}
-                    boxSize={6}
-                    color={textColor}
-                    _hover={{
-                      color: primaryColor,
-                      transform: "translateY(-3px)",
-                    }}
-                    transition="all 0.2s"
-                  />
-                </Link>
-                <Link href="https://linkedin.com" isExternal>
-                  <Icon
-                    as={FaLinkedin}
-                    boxSize={6}
-                    color={textColor}
-                    _hover={{
-                      color: primaryColor,
-                      transform: "translateY(-3px)",
-                    }}
-                    transition="all 0.2s"
-                  />
-                </Link>
-                <Link href="https://twitter.com" isExternal>
-                  <Icon
-                    as={FaTwitter}
-                    boxSize={6}
-                    color={textColor}
-                    _hover={{
-                      color: primaryColor,
-                      transform: "translateY(-3px)",
-                    }}
-                    transition="all 0.2s"
-                  />
-                </Link>
+                {iconNavbar.map((link) => (
+                  <Link href={link.href} isExternal key={link.label}>
+                    <Icon
+                      as={link.icon}
+                      boxSize={6}
+                      color={textColor}
+                      _hover={{
+                        color: primaryColor,
+                        transform: "translateY(-3px)",
+                      }}
+                      transition="0.2s"
+                    />
+                  </Link>
+                ))}
               </HStack>
             </VStack>
           </motion.div>
 
-          {/* القسم الأيمن: نموذج الإرسال */}
           <motion.div
             variants={itemVariants}
             initial="hidden"

@@ -1,6 +1,6 @@
 import { IContNavbar, ILinksPage } from "@/interfaces";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { FaReact, FaNodeJs, FaSass } from "react-icons/fa";
+import { FaGithub, FaLaravel, FaLinkedin, FaPhp, FaSync, FaTwitter } from "react-icons/fa";
+import { FaReact, FaNodeJs } from "react-icons/fa";
 import {
   SiNextdotjs,
   SiTypescript,
@@ -15,8 +15,25 @@ import {
   SiMysql,
   SiAxios,
   SiReact,
+  SiRedux,
+  SiShadcnui,
+  SiJquery,
+  SiVite,
+} from "react-icons/si";
+import {
+  FaJs,
+  FaPython,
+  FaHtml5,
+  FaCss3Alt,
+  FaGitAlt,
+  FaDocker,
+} from "react-icons/fa";
+import {
+  SiPostman,
 } from "react-icons/si";
 
+
+// Navbar
 export const iconNavbar: IContNavbar[] = [
   {
     icon: FaGithub,
@@ -90,5 +107,58 @@ export const projectsData = [
     tools: [SiTypescript, SiReact, SiLaravel, SiTailwindcss, SiAxios],
     liveUrl: "https://cliniccore.online/dentosmile/",
     githubUrl: "https://github.com/nab1h/saas-clininc.git",
+  },
+  {
+    title: "Coffee-Shop: High-End E-commerce Platform with Full Dashboard",
+    description:
+      "A feature-rich E-commerce solution built as a Decoupled System. The frontend is a high-performance React SPA strictly typed with TypeScript, utilizing Redux Toolkit for sophisticated state management (Cart logic, Dark/Light modes, User sessions). Styled with Shadcn UI for a premium look. The backend is a robust Laravel API secured by Laravel Passport (OAuth2) for safe authentication. It includes a custom CMS Dashboard for real-time inventory management, order tracking, and sales analytics.",
+    image: "/projects/ecommerce.png",
+    tools: [SiTypescript, SiReact, SiRedux, SiLaravel, SiShadcnui],
+    liveUrl: "https://cliniccore.online/dentosmile/",
+    githubUrl: "https://github.com/nab1h/saas-clininc.git",
+  },
+];
+// Skills
+export const skillsData = [
+  {
+    title: "Programming Languages",
+    skills: [
+      { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "Php", icon: FaPhp, color: "#3776AB" },
+      { name: "HTML5", icon: FaHtml5, color: "#E34F26" },
+      { name: "CSS3", icon: FaCss3Alt, color: "#1572B6" },
+      { name: "Python", icon: FaPython, color: "#3776AB" },
+    ],
+  },
+  {
+    title: "Frameworks & Libraries",
+    skills: [
+      { name: "Laravel", icon: FaLaravel, color: "#F05032" },
+      { name: "React", icon: FaReact, color: "#61DAFB" },
+      { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+      { name: "Node.js", icon: FaNodeJs, color: "#339933" },
+      { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
+      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "jQuery", icon: SiJquery, color: "#0769AD" },
+      { name: "Chakra UI", icon: SiChakraui, color: "#319795" },
+    ],
+  },
+  {
+    title: "Tools & Technologies",
+    skills: [
+      { name: "Git", icon: FaGitAlt, color: "#F05032" },
+      { name: "GitHub", icon: FaGithub, color: "#181717" },
+      { name: "Docker", icon: FaDocker, color: "#2496ED" },
+      {
+        name: "AJAX",
+        icon: FaSync,
+        color: "#F7DF1E",
+      },
+      { name: "Redux", icon: SiRedux, color: "#764ABC" },
+      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+      { name: "Vite", icon: SiVite, color: "#646CFF" },
+    ],
   },
 ];

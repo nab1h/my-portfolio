@@ -1,5 +1,6 @@
 "use client";
 
+import { iconNavbar, LinksPage } from "@/data";
 import { useAppColors } from "@/hooks/useAppColors";
 import {
   Box,
@@ -31,7 +32,7 @@ const Footer = () => {
           <Image
             src="/logo.png"
             alt="Logo"
-                      h="100px"
+            h="100px"
             objectFit="contain"
             fallback={
               <Text fontSize="2xl" fontWeight="bold" color={primaryColor}>
@@ -41,72 +42,38 @@ const Footer = () => {
           />
 
           <HStack spacing={8}>
-            <Link
-              href="#home"
-              color={textColor}
-              _hover={{ color: primaryColor }}
-              fontWeight="medium"
-            >
-              Home
-            </Link>
-            <Link
-              href="#about"
-              color={textColor}
-              _hover={{ color: primaryColor }}
-              fontWeight="medium"
-            >
-              About
-            </Link>
-            <Link
-              href="#projects"
-              color={textColor}
-              _hover={{ color: primaryColor }}
-              fontWeight="medium"
-            >
-              Projects
-            </Link>
-            <Link
-              href="#contact"
-              color={textColor}
-              _hover={{ color: primaryColor }}
-              fontWeight="medium"
-            >
-              Contact
-            </Link>
+            {LinksPage.map((link, i) => (
+              <Link
+                key={i}
+                href={link.href}
+                color={textColor}
+                _hover={{ color: primaryColor }}
+                fontWeight="medium"
+              >
+                {link.label}
+              </Link>
+            ))}
           </HStack>
 
           <HStack spacing={5}>
-            <Link href="https://github.com" isExternal>
-              <Icon
-                as={FaGithub}
-                boxSize={5}
-                color={textColor}
-                _hover={{ color: primaryColor, transform: "translateY(-2px)" }}
-                transition="all 0.2s"
-              />
-            </Link>
-            <Link href="https://linkedin.com" isExternal>
-              <Icon
-                as={FaLinkedin}
-                boxSize={5}
-                color={textColor}
-                _hover={{ color: primaryColor, transform: "translateY(-2px)" }}
-                transition="all 0.2s"
-              />
-            </Link>
-            <Link href="https://twitter.com" isExternal>
-              <Icon
-                as={FaTwitter}
-                boxSize={5}
-                color={textColor}
-                _hover={{ color: primaryColor, transform: "translateY(-2px)" }}
-                transition="all 0.2s"
-              />
-            </Link>
+            {iconNavbar.map((item, i) => (
+              <Link href={item.href} isExternal key={i}>
+                <Icon
+                  as={item.icon}
+                  boxSize={5}
+                  color={textColor}
+                  _hover={{
+                    color: primaryColor,
+                    transform: "translateY(-2px)",
+                  }}
+                  transition="all 0.2s"
+                />
+              </Link>
+            ))}
           </HStack>
 
           <Text fontSize="sm" color={textColor} opacity="0.7">
-            © {new Date().getFullYear()} John Doe. All Rights Reserved.
+            © {new Date().getFullYear()} <a color={primaryColor} href="https://nabih.online">Nabih Alashmawy</a>. All Rights Reserved.
           </Text>
         </VStack>
       </Container>
