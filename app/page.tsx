@@ -13,6 +13,6 @@ const Home = () => {
     <Projects />
     <Skills />
     <Contact />
-  </>;
+  </>
 }
 export default Home;

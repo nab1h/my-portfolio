@@ -1,5 +1,5 @@
 import { IContNavbar, ILinksPage } from "@/interfaces";
-import { FaGithub, FaLaravel, FaLinkedin, FaPhp, FaSync, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLaravel, FaLinkedin, FaPhp, FaSync } from "react-icons/fa";
 import { FaReact, FaNodeJs } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -37,18 +37,18 @@ import {
 export const iconNavbar: IContNavbar[] = [
   {
     icon: FaGithub,
-    href: "https://github.com",
+    href: "https://github.com/nab1h",
     label: "Github",
   },
   {
     icon: FaLinkedin,
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/nab1h/",
     label: "LinkedIn",
   },
   {
-    icon: FaTwitter,
-    href: "https://twitter.com",
-    label: "Twitter",
+    icon: FaFacebook,
+    href: "https://www.facebook.com/nab1h2",
+    label: "Facebook",
   },
 ];
 // Link Page
@@ -105,7 +105,9 @@ export const projectsData = [
       "A robust, high-performance SaaS-ready platform for dental clinics, engineered with a Decoupled Architecture. The frontend is a sophisticated Single Page Application (SPA) built with React and TypeScript, styled with Tailwind CSS for a modern, responsive UI. It consumes a secure Laravel RESTful API backend, handling complex data flows via Axios. Features include real-time appointment scheduling, patient review systems, and a comprehensive management dashboard, all focused on type-safety, scalability, and seamless user interaction.",
     image: "/projects/saas.png",
     tools: [SiTypescript, SiReact, SiLaravel, SiTailwindcss, SiAxios],
-    liveUrl: "https://cliniccore.online/dentosmile/",
+    liveUrl: "https://nabih-alashmawy.online/",
+    liveUrlOne: "https://cliniccore.online/dentosmile/",
+    liveUrlTwo: "https://cliniccore.online/elsabail/",
     githubUrl: "https://github.com/nab1h/saas-clininc.git",
   },
   {

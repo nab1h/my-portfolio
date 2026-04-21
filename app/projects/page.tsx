@@ -122,6 +122,41 @@ const Projects = () => {
                     >
                       Live Demo
                     </Button>
+                    {project.liveUrlOne ? (
+                      <Button
+                        as="a"
+                        href={project.liveUrlOne}
+                        target="_blank"
+                        leftIcon={<Icon as={FaExternalLinkAlt} />}
+                        backgroundColor={primaryColor}
+                        color="white"
+                        _hover={{ opacity: 0.8 }}
+                        borderRadius="4"
+                        size="sm"
+                      >
+                        Live Demo One
+                      </Button>
+                    ) : (
+                      ""
+                    )}
+
+                    {project.liveUrlTwo ? (
+                      <Button
+                        as="a"
+                        href={project.liveUrlTwo}
+                        target="_blank"
+                        leftIcon={<Icon as={FaExternalLinkAlt} />}
+                        backgroundColor={primaryColor}
+                        color="white"
+                        _hover={{ opacity: 0.8 }}
+                        borderRadius="4"
+                        size="sm"
+                      >
+                        Live Demo Tow
+                      </Button>
+                    ) : (
+                      ""
+                    )}
                   </HStack>
                 </Box>
               </Box>

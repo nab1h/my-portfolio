@@ -1,6 +1,9 @@
 "use client";
 
 import { useAppColors } from "@/hooks/useAppColors";
+import { useToast } from "@chakra-ui/react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import {
   Container,
   Box,
@@ -41,6 +44,10 @@ const Contact = () => {
   const { primaryColor, textColor, headingColor } = useAppColors();
   const bgColor = useColorModeValue("white", "gray.800");
   const inputBg = useColorModeValue("gray.50", "gray.900");
+  const toast = useToast();
+  const formRef = useRef<HTMLFormElement | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [loading, setLoading] = useState(false);
 
   return (
     <Box id="contact" py={20} bg={useColorModeValue("gray.50", "gray.900")}>
@@ -138,14 +145,49 @@ const Contact = () => {
               <VStack
                 spacing={5}
                 as="form"
+                ref={formRef}
                 onSubmit={(e) => {
                   e.preventDefault();
-                  alert("Message Sent!");
+
+                  if (!formRef.current) return;
+
+                  setLoading(true);
+
+                  emailjs
+                    .sendForm(
+                      "service_zhh1sbn",
+                      "template_t0td99q",
+                      formRef.current,
+                      "sBLMgTBoc88y3UXn4",
+                    )
+                    .then(() => {
+                      toast({
+                        title: "Message sent successfully 🚀",
+                        status: "success",
+                        duration: 3000,
+                        isClosable: true,
+                      });
+
+                      formRef.current?.reset();
+                    })
+                    .catch((error) => {
+                      toast({
+                        title: "Something went wrong ❌",
+                        description: error.text,
+                        status: "error",
+                        duration: 3000,
+                        isClosable: true,
+                      });
+                    })
+                    .finally(() => {
+                      setLoading(false);
+                    });
                 }}
               >
                 <FormControl isRequired>
                   <FormLabel color={headingColor}>Name</FormLabel>
                   <Input
+                    name="name"
                     type="text"
                     placeholder="Your Name"
                     bg={inputBg}
@@ -159,6 +201,7 @@ const Contact = () => {
                 <FormControl isRequired>
                   <FormLabel color={headingColor}>Email</FormLabel>
                   <Input
+                    name="email"
                     type="email"
                     placeholder="Your Email"
                     bg={inputBg}
@@ -172,6 +215,7 @@ const Contact = () => {
                 <FormControl isRequired>
                   <FormLabel color={headingColor}>Subject</FormLabel>
                   <Input
+                    name="title"
                     type="text"
                     placeholder="Subject"
                     bg={inputBg}
@@ -185,6 +229,7 @@ const Contact = () => {
                 <FormControl isRequired>
                   <FormLabel color={headingColor}>Message</FormLabel>
                   <Textarea
+                    name="message"
                     placeholder="Your Message"
                     rows={5}
                     bg={inputBg}
