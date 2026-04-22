@@ -11,18 +11,16 @@ import {
   Text,
   VStack,
   Icon,
-  useColorModeValue,
 } from "@chakra-ui/react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
-  const { primaryColor, textColor } = useAppColors();
-  const bgColor = useColorModeValue("white", "gray.800");
+  const { primaryColor, textColor, navbarBg } = useAppColors();
+
 
   return (
     <Box
       as="footer"
-      bg={bgColor}
+      bg={navbarBg}
       borderTop="4px solid"
       borderColor={primaryColor}
       py={10}
@@ -41,7 +39,7 @@ const Footer = () => {
             }
           />
 
-          <HStack spacing={8}>
+          <HStack spacing={5}>
             {LinksPage.map((link, i) => (
               <Link
                 key={i}
@@ -73,7 +71,11 @@ const Footer = () => {
           </HStack>
 
           <Text fontSize="sm" color={textColor} opacity="0.7">
-            © {new Date().getFullYear()} <a color={primaryColor} href="https://nabih.online">Nabih Alashmawy</a>. All Rights Reserved.
+            © {new Date().getFullYear()}{" "}
+            <a color={primaryColor} href="https://nabih.online">
+              Nabih Alashmawy
+            </a>
+            . All Rights Reserved.
           </Text>
         </VStack>
       </Container>

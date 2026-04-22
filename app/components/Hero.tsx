@@ -89,8 +89,9 @@ const router = useRouter();
 
               <motion.div variants={itemVariants}>
                 <HStack
-                  spacing={4}
+                  spacing={2}
                   justifyContent={{ base: "center", md: "flex-start" }}
+                  px={{ base: "10px" , md: ""}}
                 >
                   <Button
                     colorScheme="teal"

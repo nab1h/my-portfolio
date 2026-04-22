@@ -13,7 +13,12 @@ export const metadata = {
   },
   manifest: "/site.webmanifest",
 };
+import { Space_Grotesk } from "next/font/google";
 
+const space = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 export default function RootLayout({
   children,
 }: {
@@ -21,7 +26,7 @@ export default function RootLayout({
   }) {
   
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={space.className}>
       <body>
         <Providers>
           <Navbar />

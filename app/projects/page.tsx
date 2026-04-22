@@ -96,7 +96,7 @@ const Projects = () => {
                     ))}
                   </HStack>
 
-                  <HStack spacing={4}>
+                  <HStack spacing={4} wrap="wrap">
                     <Button
                       as="a"
                       href={project.githubUrl}

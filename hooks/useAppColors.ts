@@ -14,7 +14,7 @@ export const useAppColors = () => {
     );
     const navbarBg = useColorModeValue(
       "rgba(255, 255, 255)", // light mode
-      "rgba(0, 0, 0)", // dark mode
+      "#0f1117", // dark mode
     );
 
   return {

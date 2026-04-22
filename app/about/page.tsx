@@ -21,7 +21,7 @@ const About = () => {
       useAppColors();
 
   return (
-    <Box id="about" py={20}>
+    <Box id="about" py={20} overflow={'hidden'}>
       <Container maxW="container.lg">
         <SectionTitle
           title="About Me"
